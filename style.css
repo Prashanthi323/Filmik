@@ -1,0 +1,49 @@
+body {
+  background-color: #f4ecf7;
+  font-family: "Open Sans", sans-serif;
+}
+button {
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  border-style: none;
+  cursor: pointer;
+}
+input {
+  border-radius: 5px;
+  border-style: none;
+  padding: 5px;
+}
+.container {
+  max-width: 900px;
+  width: 85%;
+  line-height: 2;
+  padding: 0;
+  margin: 20px auto;
+}
+img {
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin-right: 20px;
+}
+
+.inputCard {
+  background-color: #d7bde2;
+  padding: 50px 20px;
+  border-radius: 20px;
+}
+.movieCard {
+  padding: 10px;
+  background-color: #f4ecf7;
+  margin: 8px;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 700px) {
+  .moviecard {
+    width: 900px;
+  }
+}
