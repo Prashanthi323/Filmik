@@ -11,11 +11,19 @@ axios.defaults.headers.common['x-rapidapi-host']='imdb8.p.rapidapi.com'
 
 function getInformation(){
     const movie= document.getElementById('name').value;
-        
+    document.getElementById('name').value='';
         axios.get(`https://imdb8.p.rapidapi.com/auto-complete?q=${movie}`)
         .then(res => {
             if (res.status===200){
-                res.data.d.forEach(movie=> search(movie))
+                document.getElementById('status').innerHTML=`Your search results for <b>${movie}</b>:`
+                document.querySelector('#output').innerHTML=''
+                console.log(res)
+
+                movies=res.data.d
+                for(var i=0;i<5;i++){
+                    search(movies[i])
+                }
+                // document.getElementById('more').style.display= block;
             }
         })            
         .catch(err => console.log(''));
@@ -31,11 +39,10 @@ async function search(movie)
             <p>Rank: ${movie.rank}<br>`
             x= await axios.get(`https://imdb8.p.rapidapi.com/title/get-ratings?tconst=${movie.id}`)
             .then(res=> {
-                console.log(res)
                 card+= `
             Rating: ${res.data.rating}/10<br>
             Rating count: ${res.data.ratingCount} <br>`
-    
+            
         });
         
         
@@ -52,7 +59,8 @@ async function search(movie)
             Starring: ${movie.s}<br>`
         }
         card+=`</div>`
-        document.querySelector('.output').innerHTML+= card;                   
+        document.querySelector('#output').innerHTML+= card;         
+                 
     }       
 
 
